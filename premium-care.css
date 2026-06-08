@@ -706,7 +706,7 @@ p { margin: 0; text-wrap: pretty; }
     background-position: calc(72% - 50px) center;
   }
   .hero--implant {
-    background-position: calc(100% + 250px) center;
+    background-position: calc(100% + 300px) center;
   }
   .hero::before {
     background: linear-gradient(90deg,
