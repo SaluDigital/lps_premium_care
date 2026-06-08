@@ -11,6 +11,7 @@
   --gold:       #C8A24A;
   --gold-light: #D8BE75;
   --gold-deep:  #a98432;
+  --whatsapp:   #25D366;
   --off:        #F8F5EF;
   --beige:      #EFE8DC;
   --grey-line:  #E8E8E8;
@@ -141,6 +142,18 @@ p { margin: 0; text-wrap: pretty; }
 }
 .btn-gold:hover { box-shadow: 0 22px 50px -16px rgba(200,162,74,0.6); }
 
+.btn[href*="wa.me"] {
+  background: var(--whatsapp);
+  border-color: transparent;
+  color: var(--white);
+  box-shadow: 0 16px 40px -18px rgba(37,211,102,0.55);
+}
+.btn[href*="wa.me"]:hover {
+  background: #1ebe5d;
+  color: var(--white);
+  box-shadow: 0 22px 50px -16px rgba(37,211,102,0.62);
+}
+
 .btn-outline-dark {
   background: transparent;
   border-color: rgba(11,11,11,0.22);
@@ -176,11 +189,21 @@ p { margin: 0; text-wrap: pretty; }
 .hero {
   position: relative;
   background:
-    url("images/hero.jpg") center right / cover no-repeat,
+    url("images/fundo_hero.webp") center right / cover no-repeat,
     var(--ink);
   color: var(--off);
   overflow: hidden;
   min-height: min(760px, 100svh);
+}
+.hero--implant {
+  background:
+    url("hero_implante.webp") center right / cover no-repeat,
+    var(--ink);
+}
+.hero--ortho {
+  background:
+    url("hero_orto.webp") center right / cover no-repeat,
+    var(--ink);
 }
 .hero::before {
   content: ""; position: absolute; inset: 0;
@@ -258,6 +281,7 @@ p { margin: 0; text-wrap: pretty; }
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
   margin-top: 56px;
 }
+.treat-grid--two { grid-template-columns: repeat(2, 1fr); }
 .treat-card {
   background: var(--white); border: 1px solid var(--hair);
   border-radius: var(--r); padding: 34px 30px 30px;
@@ -679,7 +703,10 @@ p { margin: 0; text-wrap: pretty; }
   .eyebrow::before { width: 22px; }
   .hero {
     min-height: auto;
-    background-position: calc(72% - 100px) center;
+    background-position: calc(72% - 50px) center;
+  }
+  .hero--implant {
+    background-position: calc(100% + 250px) center;
   }
   .hero::before {
     background: linear-gradient(90deg,
