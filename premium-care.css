@@ -202,7 +202,7 @@ p { margin: 0; text-wrap: pretty; }
 }
 .hero--ortho {
   background:
-    url("hero_orto.webp") center right / cover no-repeat,
+    url("images/ortodontia.webp") center right / cover no-repeat,
     var(--ink);
 }
 .hero::before {
@@ -234,7 +234,10 @@ p { margin: 0; text-wrap: pretty; }
   color: var(--off); letter-spacing: -0.02em; line-height: 1.04;
   margin-bottom: 26px;
 }
-.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero h1 em { font-style: italic; color: var(--gold-light); font-weight: 700; }
+.h1 em { font-style: italic; font-weight: 700; }
+.section-head .h1 em,
+.split-copy .h1 em { color: var(--gold-deep); }
 .hero .lead { color: rgba(248,245,239,0.74); max-width: 620px; margin: 0; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; justify-content: flex-start; }
 
@@ -281,7 +284,12 @@ p { margin: 0; text-wrap: pretty; }
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
   margin-top: 56px;
 }
-.treat-grid--two { grid-template-columns: repeat(2, 1fr); }
+.treat-grid--two {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .treat-card {
   background: var(--white); border: 1px solid var(--hair);
   border-radius: var(--r); padding: 34px 30px 30px;
@@ -296,6 +304,34 @@ p { margin: 0; text-wrap: pretty; }
 }
 .treat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(200,162,74,0.4); }
 .treat-card:hover::before { transform: scaleX(1); }
+.treat-card > * { position: relative; z-index: 2; }
+.treat-card--image {
+  background:
+    linear-gradient(180deg, rgba(7,7,7,0.28), rgba(7,7,7,0.58)),
+    var(--card-bg) top center / cover no-repeat;
+  border-color: rgba(200,162,74,0.22);
+  box-shadow: var(--shadow-sm);
+}
+.treat-card--image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.08)),
+    linear-gradient(0deg, rgba(11,11,11,0.44), rgba(11,11,11,0.16));
+  z-index: 1;
+}
+.treat-card--image .treat-icon {
+  background: rgba(248,245,239,0.88);
+  color: var(--ink);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+.treat-card--image h3,
+.treat-card--image p,
+.treat-card--image .tcta {
+  color: var(--off);
+}
+.treat-card--image .tcta svg { stroke: currentColor; }
 .treat-icon {
   width: 56px; height: 56px; border-radius: 12px;
   background: var(--beige); color: var(--ink);
@@ -380,54 +416,99 @@ p { margin: 0; text-wrap: pretty; }
 .fineprint svg { width: 15px; height: 15px; color: var(--gold-deep); flex: none; margin-top: 3px; }
 
 /* ============================================================
-   GALERIA DA CLÍNICA
+   ESTRUTURA DA CLINICA
    ============================================================ */
-.clinic-slider {
-  --clinic-gap: 18px;
+.clinic-gallery {
   position: relative;
   overflow: hidden;
-  margin-top: 54px;
-  touch-action: pan-y;
+  background:
+    linear-gradient(180deg, rgba(11,11,11,0.34), rgba(11,11,11,0.18)),
+    url("images/estrutura.webp") center center / cover no-repeat;
+  background-attachment: fixed;
 }
-.clinic-slider::before,
-.clinic-slider::after {
+.clinic-gallery::before {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 34px;
-  z-index: 2;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(216,190,117,0.24), transparent 34%),
+    linear-gradient(135deg, rgba(7,7,7,0.48), rgba(7,7,7,0.18) 48%, rgba(255,255,255,0.04));
   pointer-events: none;
 }
-.clinic-slider::before {
-  left: 0;
-  background: linear-gradient(90deg, var(--off), rgba(248,245,239,0));
+.clinic-gallery::after {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border: 1px solid rgba(248,245,239,0.14);
+  border-radius: 26px;
+  pointer-events: none;
 }
-.clinic-slider::after {
-  right: 0;
-  background: linear-gradient(270deg, var(--off), rgba(248,245,239,0));
+.clinic-gallery .container,
+.clinic-gallery .section-head,
+.clinic-hero {
+  position: relative;
+  z-index: 1;
 }
-.clinic-track {
-  display: flex;
-  gap: var(--clinic-gap);
-  transition: transform .72s cubic-bezier(.2,.7,.2,1);
-  will-change: transform;
+.clinic-gallery .eyebrow,
+.clinic-gallery .h1,
+.clinic-gallery .lead {
+  color: var(--off);
 }
-.clinic-slide {
-  flex: 0 0 calc((100% - (var(--clinic-gap) * 2)) / 3);
-  min-width: 0;
+.clinic-gallery .h1 em { color: var(--ink); }
+.clinic-gallery .eyebrow::before,
+.clinic-gallery .eyebrow::after {
+  background: rgba(216,190,117,0.85);
+}
+.clinic-gallery .lead {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(248,245,239,0.84);
+}
+.clinic-hero {
+  margin-top: 56px;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+}
+.clinic-hero__panel {
+  width: min(100%, 760px);
+  padding: clamp(28px, 4vw, 44px);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(248,245,239,0.9), rgba(248,245,239,0.78));
+  border: 1px solid rgba(216,190,117,0.42);
+  box-shadow: 0 28px 80px rgba(11,11,11,0.22);
+  backdrop-filter: blur(6px);
+  text-align: center;
+}
+.clinic-hero__kicker {
+  margin: 0 0 14px;
+  font-size: 0.86rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.clinic-hero__text {
   margin: 0;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid rgba(200,162,74,0.32);
-  background: var(--white);
-  box-shadow: var(--shadow-sm);
-  aspect-ratio: 4 / 3;
+  font-size: clamp(1rem, 1.7vw, 1.18rem);
+  line-height: 1.8;
+  color: rgba(11,11,11,0.8);
 }
-.clinic-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.clinic-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.clinic-hero__meta span {
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(216,190,117,0.32);
+  color: rgba(11,11,11,0.75);
+  font-size: 0.94rem;
+  box-shadow: 0 10px 22px rgba(11,11,11,0.08);
 }
 
 /* ============================================================
@@ -457,6 +538,8 @@ p { margin: 0; text-wrap: pretty; }
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
   margin-top: 60px; position: relative;
 }
+.steps--three { grid-template-columns: repeat(3, 1fr); }
+.steps--three::before { display: none; }
 .steps::before {
   content: ""; position: absolute; top: 27px; left: 6%; right: 6%; height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold) 12%, var(--gold) 88%, transparent);
@@ -675,7 +758,6 @@ p { margin: 0; text-wrap: pretty; }
 @media (max-width: 1040px) {
   .hero-grid { grid-template-columns: 1fr; }
   .treat-grid, .need-grid, .diff-grid { grid-template-columns: repeat(2, 1fr); }
-  .clinic-slide { flex-basis: calc((100% - var(--clinic-gap)) / 2); }
   .testi-card { flex-basis: calc((100% - var(--testi-gap)) / 2); }
   .steps { grid-template-columns: repeat(2, 1fr); gap: 36px 22px; }
   .steps::before { display: none; }
@@ -814,7 +896,6 @@ p { margin: 0; text-wrap: pretty; }
     padding: 22px 20px;
     margin: 24px 0 22px;
   }
-  .clinic-slider,
   .testi-carousel {
     margin-left: calc(var(--pad) * -1);
     margin-right: calc(var(--pad) * -1);
@@ -822,11 +903,16 @@ p { margin: 0; text-wrap: pretty; }
     padding-right: var(--pad);
     scroll-padding-left: var(--pad);
   }
-  .clinic-slider::before,
-  .clinic-slider::after,
   .testi-carousel::before,
   .testi-carousel::after { width: var(--pad); }
-  .clinic-slide { flex-basis: min(82vw, 420px); }
+  .clinic-gallery {
+    background-attachment: scroll;
+    background-position: center center;
+  }
+  .clinic-gallery::after { inset: 14px; border-radius: 18px; }
+  .clinic-hero { min-height: 360px; margin-top: 40px; }
+  .clinic-hero__panel { padding: 24px 20px; }
+  .clinic-hero__meta { gap: 10px; }
   .testi-card {
     flex-basis: min(82vw, 420px);
     min-height: 280px;
@@ -879,9 +965,13 @@ p { margin: 0; text-wrap: pretty; }
 @media (max-width: 560px) {
   body { font-size: 16px; }
   .treat-grid, .need-grid, .diff-grid, .steps { grid-template-columns: 1fr; }
-  .clinic-slide,
   .testi-card { flex-basis: calc(100vw - (var(--pad) * 2)); }
   .diff-grid .diff-card { border-right: 0; }
+  .clinic-gallery .h1 { font-size: 1.56rem; }
+  .clinic-gallery .lead { font-size: 1rem; }
+  .clinic-hero { min-height: 320px; }
+  .clinic-hero__panel { border-radius: 18px; }
+  .clinic-hero__meta span { width: 100%; }
   .hero-actions .btn, .cta-final .btn { width: 100%; }
   .hero-actions, .cta-final .inner .actions { width: 100%; }
 }
