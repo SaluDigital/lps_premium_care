@@ -168,6 +168,18 @@ p { margin: 0; text-wrap: pretty; }
 }
 .btn-outline-gold:hover { border-color: var(--gold); background: rgba(200,162,74,0.08); }
 
+.btn.sellbot-wpp-open {
+  background: linear-gradient(135deg, #25D366, #1ebe5d);
+  border-color: transparent;
+  color: var(--white);
+  box-shadow: 0 16px 40px -18px rgba(37,211,102,0.55);
+}
+.btn.sellbot-wpp-open:hover {
+  background: linear-gradient(135deg, #2fe06f, #22c55e);
+  color: var(--white);
+  box-shadow: 0 22px 50px -16px rgba(37,211,102,0.62);
+}
+
 .btn-sm { --bh: 46px; padding: 0 20px; font-size: 14px; }
 .btn-lg { --bh: 62px; padding: 0 34px; font-size: 16px; }
 .btn-block { display: flex; width: 100%; }
@@ -182,6 +194,17 @@ p { margin: 0; text-wrap: pretty; }
 .tcta svg { width: 15px; height: 15px; color: var(--gold-deep); transition: transform .25s ease; }
 .tcta:hover { color: var(--gold-deep); gap: 12px; }
 .tcta:hover svg { transform: translateX(2px); }
+
+.tcta.sellbot-wpp-open {
+  color: var(--whatsapp);
+}
+.tcta.sellbot-wpp-open svg {
+  color: currentColor;
+  stroke: currentColor;
+}
+.tcta.sellbot-wpp-open:hover {
+  color: #1ebe5d;
+}
 
 /* ============================================================
    HERO
