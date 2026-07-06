@@ -293,6 +293,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<div class="important-popup" data-important-popup aria-hidden="true">
+  <div class="important-popup__dialog" role="dialog" aria-modal="true" aria-labelledby="important-popup-title">
+    <button class="important-popup__close" type="button" data-popup-close aria-label="Fechar aviso">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <h2 class="important-popup__title h1" id="important-popup-title">Aviso Importante</h2>
+    <p class="important-popup__text">N&atilde;o atendemos conv&ecirc;nios. Os atendimentos s&atilde;o realizados apenas de forma particular.</p>
+    <div class="important-popup__actions">
+      <button class="btn btn-gold" type="button" data-popup-close>Entendi</button>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <!-- ============================ FOOTER ============================ -->
@@ -349,6 +364,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   window.addEventListener('load', revealCheck);
 
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const importantPopup = document.querySelector('[data-important-popup]');
+  if (importantPopup) {
+    const popupDialog = importantPopup.querySelector('.important-popup__dialog');
+    const popupCloseButtons = importantPopup.querySelectorAll('[data-popup-close]');
+
+    function closeImportantPopup() {
+      importantPopup.classList.remove('is-visible');
+      importantPopup.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('popup-open');
+    }
+
+    function openImportantPopup() {
+      importantPopup.classList.add('is-visible');
+      importantPopup.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('popup-open');
+    }
+
+    popupCloseButtons.forEach((button) => {
+      button.addEventListener('click', closeImportantPopup);
+    });
+
+    importantPopup.addEventListener('click', (event) => {
+      if (!popupDialog.contains(event.target)) closeImportantPopup();
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && importantPopup.classList.contains('is-visible')) {
+        closeImportantPopup();
+      }
+    });
+
+    window.setTimeout(openImportantPopup, 250);
+  }
 
 </script>
 <script src="https://plugin.sellbot.tech/assets/js/sellbot_plugin.min.js"></script>
