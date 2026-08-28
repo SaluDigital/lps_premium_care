@@ -311,6 +311,11 @@ body.popup-open {
     url("images/ortodontia.webp") center right / cover no-repeat,
     var(--ink);
 }
+.hero--ortho-child {
+  background:
+    url("images/ortodontia-infantil.webp") center right / cover no-repeat,
+    var(--ink);
+}
 .hero::before {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(90deg,
@@ -382,6 +387,121 @@ body.popup-open {
 .need-card .ic svg { width: 21px; height: 21px; }
 .need-card p { font-size: 15.5px; color: var(--ink); font-weight: 500; line-height: 1.35; }
 .need-foot { margin-top: 34px; }
+
+.child-bite {
+  position: relative;
+  overflow: hidden;
+}
+.child-bite__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: end;
+}
+.child-bite__copy {
+  max-width: 780px;
+}
+.child-bite__copy .lead {
+  max-width: 720px;
+  margin-top: 20px;
+}
+.child-bite__panel {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0)),
+    var(--ink);
+  border: 1px solid rgba(200,162,74,0.3);
+  border-radius: var(--r);
+  color: rgba(248,245,239,0.78);
+  padding: clamp(26px, 3.2vw, 38px);
+  box-shadow: var(--shadow-md);
+}
+.child-bite__seal {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(200,162,74,0.14);
+  border: 1px solid rgba(224,193,117,0.32);
+  color: var(--gold-light);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.child-bite__panel p {
+  margin-top: 20px;
+  font-size: clamp(1rem, 1.3vw, 1.14rem);
+  line-height: 1.65;
+}
+.child-bite__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: clamp(42px, 5vw, 68px);
+}
+.child-bite__item {
+  min-height: 190px;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid var(--hair);
+  border-radius: var(--r);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 18px 52px rgba(20,20,20,0.05);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.child-bite__item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(200,162,74,0.45);
+}
+.child-bite__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,162,74,0.48);
+  color: var(--gold-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.child-bite__icon svg {
+  width: 22px;
+  height: 22px;
+}
+.child-bite__item h3 {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.child-bite__item p {
+  color: var(--grey-text);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.child-bite__item--dark {
+  background:
+    linear-gradient(145deg, rgba(200,162,74,0.18), rgba(255,255,255,0.04)),
+    var(--ink);
+  border-color: rgba(200,162,74,0.34);
+}
+.child-bite__item--dark h3 {
+  color: var(--off);
+}
+.child-bite__item--dark p {
+  color: rgba(248,245,239,0.74);
+}
+.child-bite__item--dark .child-bite__icon {
+  color: var(--gold-light);
+  border-color: rgba(224,193,117,0.42);
+  background: rgba(200,162,74,0.12);
+}
 
 /* ============================================================
    TREATMENTS
@@ -456,6 +576,162 @@ body.popup-open {
   padding-bottom: 13px;
   line-height: 1.35;
   text-align: center;
+}
+
+.ortho-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 56px;
+}
+.ortho-option {
+  position: relative;
+  min-height: 240px;
+  padding: 24px 22px;
+  border: 1px solid var(--hair);
+  border-radius: var(--r);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.82)),
+    var(--white);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(20,20,20,0.05);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.ortho-option::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s ease;
+}
+.ortho-option:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(200,162,74,0.42);
+}
+.ortho-option:hover::before {
+  transform: scaleX(1);
+}
+.ortho-option__num {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: rgba(200,162,74,0.38);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.ortho-option__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--beige);
+  color: var(--gold-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.ortho-option__icon svg {
+  width: 24px;
+  height: 24px;
+}
+.ortho-option h3 {
+  max-width: 92%;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: 0;
+  margin-bottom: 12px;
+}
+.ortho-option p {
+  color: var(--grey-text);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+.ortho-option--featured {
+  background:
+    linear-gradient(145deg, rgba(200,162,74,0.18), rgba(255,255,255,0.04)),
+    var(--ink);
+  border-color: rgba(200,162,74,0.34);
+}
+.ortho-option--featured h3 {
+  color: var(--off);
+}
+.ortho-option--featured p {
+  color: rgba(248,245,239,0.74);
+}
+.ortho-option--featured .ortho-option__icon {
+  background: rgba(200,162,74,0.14);
+  color: var(--gold-light);
+}
+
+.ortho-growth {
+  position: relative;
+  overflow: hidden;
+}
+.ortho-growth__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: clamp(34px, 5vw, 76px);
+  align-items: center;
+}
+.ortho-growth__media {
+  position: relative;
+  min-height: 520px;
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.ortho-growth__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(11,11,11,0), rgba(11,11,11,0.22)),
+    linear-gradient(90deg, rgba(255,255,255,0.08), rgba(200,162,74,0.08));
+  pointer-events: none;
+}
+.ortho-growth__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  object-position: 62% center;
+  display: block;
+}
+.ortho-growth__copy {
+  max-width: 660px;
+}
+.ortho-growth__copy .lead {
+  margin-top: 20px;
+}
+.ortho-growth__copy > p:not(.eyebrow):not(.lead) {
+  margin-top: 18px;
+  color: var(--grey-text);
+  font-size: 1.03rem;
+  line-height: 1.7;
+}
+.ortho-growth__quote {
+  margin: 32px 0 30px;
+  padding: 24px 26px;
+  border-left: 3px solid var(--gold);
+  background:
+    linear-gradient(90deg, rgba(200,162,74,0.12), rgba(255,255,255,0.72));
+  border-radius: 0 var(--r) var(--r) 0;
+}
+.ortho-growth__quote span {
+  display: block;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.18rem, 2vw, 1.55rem);
+  line-height: 1.28;
 }
 
 /* ============================================================
@@ -864,6 +1140,22 @@ body.popup-open {
 @media (max-width: 1040px) {
   .hero-grid { grid-template-columns: 1fr; }
   .treat-grid, .need-grid, .diff-grid { grid-template-columns: repeat(2, 1fr); }
+  .child-bite__grid,
+  .child-bite__items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .child-bite__copy {
+    max-width: 100%;
+  }
+  .ortho-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ortho-growth__grid {
+    grid-template-columns: 1fr;
+  }
+  .ortho-growth__copy {
+    max-width: 100%;
+  }
   .testi-card { flex-basis: calc((100% - var(--testi-gap)) / 2); }
   .steps { grid-template-columns: repeat(2, 1fr); gap: 36px 22px; }
   .steps::before { display: none; }
@@ -892,6 +1184,9 @@ body.popup-open {
   .hero {
     min-height: auto;
     background-position: calc(72% - 50px) center;
+  }
+  .hero--ortho-child {
+    background-position: 72% center;
   }
   .hero--implant {
     background-position: calc(100% + 300px) center;
@@ -952,6 +1247,33 @@ body.popup-open {
     align-items: flex-start;
     line-height: 1.35;
     text-align: left;
+  }
+  .child-bite__grid,
+  .child-bite__items {
+    grid-template-columns: 1fr;
+  }
+  .child-bite__panel {
+    padding: 24px 22px;
+  }
+  .child-bite__item {
+    min-height: auto;
+    padding: 24px 22px;
+  }
+  .ortho-options {
+    grid-template-columns: 1fr;
+    margin-top: 42px;
+  }
+  .ortho-option {
+    min-height: auto;
+    padding: 24px 22px;
+  }
+  .ortho-growth__media,
+  .ortho-growth__media img {
+    min-height: 380px;
+  }
+  .ortho-growth__quote {
+    margin: 26px 0 28px;
+    padding: 22px 20px;
   }
   .btn {
     width: 100%;
