@@ -66,7 +66,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </script>
 </head>
-<body>
+<body class="has-treatment-notice">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBFPP3S8"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -361,20 +361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<div class="important-popup" data-important-popup aria-hidden="true">
-  <div class="important-popup__dialog" role="dialog" aria-modal="true" aria-labelledby="important-popup-title">
-    <button class="important-popup__close" type="button" data-popup-close aria-label="Fechar aviso">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/>
-      </svg>
-    </button>
-    <h2 class="important-popup__title h1" id="important-popup-title">Aviso Importante</h2>
-    <p class="important-popup__text">N&atilde;o atendemos conv&ecirc;nios. Os atendimentos s&atilde;o realizados apenas de forma particular.</p>
-    <div class="important-popup__actions">
-      <button class="btn btn-gold" type="button" data-popup-close>Entendi</button>
-    </div>
-  </div>
-</div>
+
 
 </main>
 
@@ -412,6 +399,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
+<aside class="treatment-notice" aria-label="Aviso sobre atendimento">
+  <p>N&atilde;o trabalhamos com planos odontol&oacute;gicos ou conv&ecirc;nios.</p>
+</aside>
+
 <script>
   const reveals = Array.from(document.querySelectorAll('.reveal'));
   function revealCheck() {
@@ -433,38 +424,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  const importantPopup = document.querySelector('[data-important-popup]');
-  if (importantPopup) {
-    const popupDialog = importantPopup.querySelector('.important-popup__dialog');
-    const popupCloseButtons = importantPopup.querySelectorAll('[data-popup-close]');
-
-    function closeImportantPopup() {
-      importantPopup.classList.remove('is-visible');
-      importantPopup.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('popup-open');
-    }
-
-    function openImportantPopup() {
-      importantPopup.classList.add('is-visible');
-      importantPopup.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('popup-open');
-    }
-
-    popupCloseButtons.forEach((button) => {
-      button.addEventListener('click', closeImportantPopup);
-    });
-
-    importantPopup.addEventListener('click', (event) => {
-      if (!popupDialog.contains(event.target)) closeImportantPopup();
-    });
-
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && importantPopup.classList.contains('is-visible')) {
-        closeImportantPopup();
-      }
-    });
-
-    window.setTimeout(openImportantPopup, 250);
+  // Keep the footer and floating controls clear of the notice at any text size.
+  const treatmentNotice = document.querySelector('.treatment-notice');
+  function updateNoticeHeight() {
+    document.documentElement.style.setProperty('--treatment-notice-height', treatmentNotice.getBoundingClientRect().height + 'px');
+  }
+  updateNoticeHeight();
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(updateNoticeHeight).observe(treatmentNotice);
+  } else {
+    window.addEventListener('resize', updateNoticeHeight);
   }
 
 </script>
